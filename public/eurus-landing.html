@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Eurus — East wind. Forward motion.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0d0d;
+    --bg2: #141414;
+    --bg3: #1a1a1a;
+    --line: rgba(255,255,255,0.08);
+    --line-bright: rgba(255,255,255,0.18);
+    --text: #e8e6e0;
+    --text-muted: #6b6962;
+    --text-dim: #3d3c3a;
+    --accent: #c8bfa8;
+    --white: #f0ede8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  /* ── Grid overlay ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 48px;
+    background: linear-gradient(to bottom, var(--bg) 60%, transparent);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+  }
+
+  .nav-logo svg { width: 28px; height: 28px; }
+
+  .nav-wordmark {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 20px;
+    letter-spacing: 0.25em;
+    color: var(--white);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 48px;
+    padding-top: 120px;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(72px, 10vw, 148px);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    max-width: 900px;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.4s;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    margin-top: 48px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    max-width: 380px;
+    line-height: 2;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.7s;
+  }
+
+  .hero-mark {
+    position: absolute;
+    right: 80px;
+    bottom: 80px;
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards 1s;
+  }
+
+  .hero-mark svg {
+    width: 180px;
+    height: 180px;
+    opacity: 0.06;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    position: relative;
+    z-index: 1;
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 0 48px;
+  }
+
+  /* ── Products ── */
+  .products {
+    position: relative;
+    z-index: 1;
+    padding: 120px 48px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 64px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--line-bright);
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .product-card {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    padding: 56px 52px;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s, border-color 0.3s;
+    display: block;
+  }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(200,191,168,0.03) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .product-card:hover {
+    background: var(--bg3);
+    border-color: var(--line-bright);
+  }
+
+  .product-card:hover::before { opacity: 1; }
+
+  .product-num {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+    margin-bottom: 40px;
+  }
+
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 48px;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1;
+  }
+
+  .product-type {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .product-desc {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    line-height: 2;
+    max-width: 300px;
+  }
+
+  .product-arrow {
+    position: absolute;
+    bottom: 52px;
+    right: 52px;
+    font-size: 20px;
+    color: var(--text-dim);
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .product-card:hover .product-arrow {
+    color: var(--accent);
+    transform: translate(4px, -4px);
+  }
+
+  /* ── About ── */
+  .about {
+    position: relative;
+    z-index: 1;
+    padding: 120px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    border-top: 1px solid var(--line);
+  }
+
+  .about-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 4vw, 56px);
+    line-height: 1.1;
+    color: var(--white);
+  }
+
+  .about-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .about-body {
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    line-height: 2.2;
+  }
+
+  .about-body p + p { margin-top: 20px; }
+
+  /* ── Footer ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--line);
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-left {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+  }
+
+  .footer-right {
+    display: flex;
+    gap: 28px;
+  }
+
+  .footer-right a {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-right a:hover { color: var(--accent); }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ── Scrolling reveal ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    nav { padding: 24px; }
+    .hero { padding: 0 24px; padding-top: 100px; }
+    .hero-title { font-size: 56px; }
+    .products { padding: 80px 24px; }
+    .products-grid { grid-template-columns: 1fr; }
+    .about { padding: 80px 24px; grid-template-columns: 1fr; gap: 40px; }
+    footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+    .divider { margin: 0 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="30,4 56,30 30,56 4,30" stroke="#e8e6e0" stroke-width="1.8" stroke-linejoin="round"/>
+      <polygon points="30,18 42,30 30,42 18,30" stroke="#e8e6e0" stroke-width="1.2" stroke-linejoin="round" opacity="0.45"/>
+      <line x1="42" y1="9" x2="55" y2="20" stroke="#e8e6e0" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="30" cy="30" r="2.5" fill="#e8e6e0" opacity="0.7"/>
+    </svg>
+    <span class="nav-wordmark">EURUS</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="https://github.com/nishadmahmud" target="_blank">GitHub</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <p class="hero-eyebrow">Indie software studio — Est. 2025</p>
+  <h1 class="hero-title">East wind.<br/><em>Forward motion.</em></h1>
+  <p class="hero-sub">
+    We build software that's simple, useful,<br/>
+    and crafted with care — one product at a time.
+  </p>
+  <div class="hero-mark">
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="100,10 190,100 100,190 10,100" stroke="white" stroke-width="2"/>
+      <polygon points="100,44 156,100 100,156 44,100" stroke="white" stroke-width="1.4"/>
+      <line x1="156" y1="22" x2="188" y2="50" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="100" cy="100" r="4" fill="white"/>
+    </svg>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- Products -->
+<section class="products" id="products">
+  <p class="section-label">Products</p>
+  <div class="products-grid">
+
+    <a class="product-card reveal" href="https://www.rovernote.live" target="_blank">
+      <p class="product-num">01</p>
+      <h2 class="product-name">RoverNote</h2>
+      <p class="product-type">Travel journaling platform</p>
+      <p class="product-desc">
+        Transform your journeys into stunning digital scrapbooks.
+        Capture photos, write notes, and share adventures with a community of travelers.
+      </p>
+      <span class="product-arrow">↗</span>
+    </a>
+
+    <a class="product-card reveal" href="https://kitbase.tech" target="_blank" style="transition-delay: 0.1s">
+      <p class="product-num">02</p>
+      <h2 class="product-name">Kitbase</h2>
+      <p class="product-type">Online utility tools</p>
+      <p class="product-desc">
+        All your everyday tools in one clean place. PDF, image, text,
+        and developer utilities — fast, private, and free. No uploads, no ads.
+      </p>
+      <span class="product-arrow">↗</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- About -->
+<section class="about reveal" id="about">
+  <h2 class="about-title">A studio built on<br/><em>craftsmanship.</em></h2>
+  <div class="about-body">
+    <p>
+      Eurus is an indie software studio founded by Nishad Mahmud —
+      a CS student and developer based in Bangladesh, building products
+      that are thoughtful, fast, and genuinely useful.
+    </p>
+    <p>
+      Every product under Eurus is designed from scratch with care —
+      no templates, no shortcuts. Just clean code and deliberate design,
+      shipped one product at a time.
+    </p>
+    <p>
+      More products are on the way.
+    </p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p class="footer-left">© 2025 Eurus. All rights reserved.</p>
+  <div class="footer-right">
+    <a href="https://www.rovernote.live" target="_blank">RoverNote</a>
+    <a href="https://kitbase.tech" target="_blank">Kitbase</a>
+    <a href="https://linkedin.com/company/theeurus" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>
