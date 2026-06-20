@@ -4,12 +4,33 @@ import { getLectures } from '../../lib/api';
 export default function StudyMaterialsPage() {
   const lectures = getLectures();
 
+  // Custom sort order based on user request
+  const sortedLectures = [...lectures].sort((a, b) => {
+    const getOrder = (title) => {
+      const lowerTitle = title.toLowerCase();
+      if (lowerTitle.includes("design patterns") && !lowerTitle.includes("codes")) return 1;
+      if (lowerTitle.includes("design patterns_codes") || lowerTitle.includes("design patterns codes")) return 2;
+      
+      const lectureMatch = lowerTitle.match(/lecture (\d+)/);
+      if (lectureMatch) {
+        return 100 + parseInt(lectureMatch[1], 10);
+      }
+      
+      if (lowerTitle.includes("solid")) return 1000;
+      if (lowerTitle.includes("uml")) return 1001;
+      
+      return 9999;
+    };
+    
+    return getOrder(a.title) - getOrder(b.title);
+  });
+
   return (
     <div>
       <h1 className="text-3xl font-bold text-[var(--dark)] mb-6">Study Materials</h1>
       
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {lectures.map((lecture) => (
+        {sortedLectures.map((lecture) => (
           <Link
             key={lecture.slug.join('/')}
             href={`/study-materials/${lecture.slug.join('/')}`}

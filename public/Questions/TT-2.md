@@ -80,6 +80,13 @@ What are the major differences between Software Testing and Quality Assurance? *
 
 ### 8
 Suppose you are tasked with designing DFDs for a library management system. Create a Level 1 DFD detailing the "Borrow Book" process, including data flows and databases **(4)**
+> **Level 0 DFD (Context Diagram)**
+> ```mermaid
+> graph LR
+>     User((Student / Member)) -- Book Request --> Process[0.0 Library System]
+>     Process -- Issued Book & Receipt --> User
+> ```
+> 
 > **Level 1 DFD: Borrow Book Process**
 > 
 > ```mermaid

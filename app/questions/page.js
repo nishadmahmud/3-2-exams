@@ -4,12 +4,27 @@ import { getQuestions } from '../../lib/api';
 export default function QuestionsPage() {
   const questions = getQuestions();
 
+  // Custom sort order based on user request
+  const sortedQuestions = [...questions].sort((a, b) => {
+    const getOrder = (title) => {
+      const lowerTitle = title.toLowerCase();
+      if (lowerTitle.includes("3-2")) return 1;
+      if (lowerTitle.includes("metro")) return 2;
+      if (lowerTitle.includes("tt-2")) return 3;
+      if (lowerTitle.includes("practice")) return 4;
+      if (lowerTitle.includes("2015")) return 5;
+      if (lowerTitle.includes("xtra")) return 6;
+      return 999;
+    };
+    return getOrder(a.title) - getOrder(b.title);
+  });
+
   return (
     <div>
       <h1 className="text-3xl font-bold text-[var(--dark)] mb-6">Question Answers</h1>
       
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {questions.map((question) => (
+        {sortedQuestions.map((question) => (
           <Link
             key={question.slug.join('/')}
             href={`/questions/${question.slug.join('/')}`}
