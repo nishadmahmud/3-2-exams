@@ -8,12 +8,16 @@ export default function QuestionsPage() {
   const sortedQuestions = [...questions].sort((a, b) => {
     const getOrder = (title) => {
       const lowerTitle = title.toLowerCase();
+      if (lowerTitle.includes("3-2") && lowerTitle.includes("2023")) return 1;
+      if (lowerTitle.includes("3-2") && lowerTitle.includes("2022")) return 2;
+      // Fallback if it just says 3-2
       if (lowerTitle.includes("3-2")) return 1;
-      if (lowerTitle.includes("metro")) return 2;
-      if (lowerTitle.includes("tt-2")) return 3;
-      if (lowerTitle.includes("practice")) return 4;
-      if (lowerTitle.includes("2015")) return 5;
-      if (lowerTitle.includes("xtra")) return 6;
+      
+      if (lowerTitle.includes("metro")) return 3;
+      if (lowerTitle.includes("tt-2")) return 4;
+      if (lowerTitle.includes("practice")) return 5;
+      if (lowerTitle.includes("2015")) return 6;
+      if (lowerTitle.includes("xtra")) return 7;
       return 999;
     };
     return getOrder(a.title) - getOrder(b.title);
