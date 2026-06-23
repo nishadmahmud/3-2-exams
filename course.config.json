@@ -1,0 +1,43 @@
+{
+  "activeCourse": "cryptography",
+  "courses": {
+    "se_dp": {
+      "title": "Software Engineering & Design Patterns",
+      "shortTitle": "SE & DP Study",
+      "folderName": "se_dp",
+      "lecturesSortOrder": [
+        "design patterns",
+        "design patterns_codes",
+        "design patterns codes",
+        "lecture 1",
+        "lecture 2",
+        "lecture 3",
+        "lecture 4",
+        "lecture 5",
+        "lecture 6",
+        "lecture 7",
+        "lecture 8",
+        "lecture 9",
+        "lecture 10",
+        "solid",
+        "uml"
+      ],
+      "questionsSortOrder": [
+        "2023",
+        "2022",
+        "metro",
+        "tt-2",
+        "practice",
+        "2015",
+        "xtra"
+      ]
+    },
+    "cryptography": {
+      "title": "Cryptography & Network Security",
+      "shortTitle": "Crypto Study",
+      "folderName": "cryptography",
+      "lecturesSortOrder": [],
+      "questionsSortOrder": []
+    }
+  }
+}

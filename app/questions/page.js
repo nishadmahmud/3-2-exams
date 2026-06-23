@@ -1,26 +1,25 @@
 import Link from 'next/link';
-import { getQuestions } from '../../lib/api';
+import { getQuestions, getActiveCourseInfo } from '../../lib/api';
 
 export default function QuestionsPage() {
   const questions = getQuestions();
+  const courseInfo = getActiveCourseInfo();
+  const sortOrder = courseInfo?.questionsSortOrder || [];
 
-  // Custom sort order based on user request
+  // Custom sort order based on dynamic configuration
   const sortedQuestions = [...questions].sort((a, b) => {
-    const getOrder = (title) => {
-      const lowerTitle = title.toLowerCase();
-      if (lowerTitle.includes("3-2") && lowerTitle.includes("2023")) return 1;
-      if (lowerTitle.includes("3-2") && lowerTitle.includes("2022")) return 2;
-      // Fallback if it just says 3-2
-      if (lowerTitle.includes("3-2")) return 1;
-      
-      if (lowerTitle.includes("metro")) return 3;
-      if (lowerTitle.includes("tt-2")) return 4;
-      if (lowerTitle.includes("practice")) return 5;
-      if (lowerTitle.includes("2015")) return 6;
-      if (lowerTitle.includes("xtra")) return 7;
-      return 999;
-    };
-    return getOrder(a.title) - getOrder(b.title);
+    const titleA = a.title.toLowerCase();
+    const titleB = b.title.toLowerCase();
+    
+    // Find index in the sortOrder array. If not found, returns -1
+    let indexA = sortOrder.findIndex(keyword => titleA.includes(keyword.toLowerCase()));
+    let indexB = sortOrder.findIndex(keyword => titleB.includes(keyword.toLowerCase()));
+    
+    // If a keyword isn't matched, push it to the end (9999)
+    if (indexA === -1) indexA = 9999;
+    if (indexB === -1) indexB = 9999;
+    
+    return indexA - indexB;
   });
 
   return (
@@ -39,9 +38,9 @@ export default function QuestionsPage() {
                 <h2 className="text-lg font-semibold text-[var(--dark)] m-0 leading-tight break-words line-clamp-2">
                   {question.title}
                 </h2>
-                {question.slug.length > 1 && (
+                {question.subtitle && (
                   <p className="text-xs text-[var(--text-muted)] mt-2 line-clamp-1">
-                    {question.slug.slice(0, -1).join(' / ')}
+                    {question.subtitle}
                   </p>
                 )}
               </div>

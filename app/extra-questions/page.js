@@ -1,12 +1,17 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
 import rehypeRaw from 'rehype-raw';
-import { getQuestionBySlug } from '../../lib/api';
+import rehypeKatex from 'rehype-katex';
+import 'katex/dist/katex.min.css';
+import { getExtraBySlug, getActiveCourseInfo } from '../../lib/api';
 import AnswerDropdown from '../../components/AnswerDropdown';
 import MermaidDiagram from '../../components/MermaidDiagram';
 
 export default function ExtraQuestionsPage() {
-  const question = getQuestionBySlug(['Xtras_qstn']);
+  const question = getExtraBySlug(['Xtras_qstn']);
+  const courseInfo = getActiveCourseInfo();
+  const folderName = courseInfo?.folderName || 'se_dp';
 
   return (
     <div>
@@ -16,8 +21,8 @@ export default function ExtraQuestionsPage() {
         {question ? (
           <div className="markdown-body">
             <ReactMarkdown 
-              remarkPlugins={[remarkGfm]}
-              rehypePlugins={[rehypeRaw]}
+              remarkPlugins={[remarkGfm, remarkMath]}
+              rehypePlugins={[rehypeRaw, rehypeKatex]}
               components={{
                 blockquote({node, children, ...props}) {
                   return <AnswerDropdown {...props}>{children}</AnswerDropdown>;
@@ -34,7 +39,7 @@ export default function ExtraQuestionsPage() {
                 img: ({ node, ...props }) => {
                   let src = props.src;
                   if (src && !src.startsWith('http') && !src.startsWith('/')) {
-                    src = `/Questions/${src}`;
+                    src = `/courses/${folderName}/extras/${src}`;
                   }
                   return <img {...props} src={src} className="max-w-full max-h-72 w-auto object-contain my-4 rounded-md mx-auto block shadow-sm border border-[var(--line)]" alt={props.alt || "Markdown image"} />;
                 }

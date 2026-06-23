@@ -1,28 +1,25 @@
 import Link from 'next/link';
-import { getLectures } from '../../lib/api';
+import { getLectures, getActiveCourseInfo } from '../../lib/api';
 
 export default function StudyMaterialsPage() {
   const lectures = getLectures();
+  const courseInfo = getActiveCourseInfo();
+  const sortOrder = courseInfo?.lecturesSortOrder || [];
 
-  // Custom sort order based on user request
+  // Custom sort order based on dynamic configuration
   const sortedLectures = [...lectures].sort((a, b) => {
-    const getOrder = (title) => {
-      const lowerTitle = title.toLowerCase();
-      if (lowerTitle.includes("design patterns") && !lowerTitle.includes("codes")) return 1;
-      if (lowerTitle.includes("design patterns_codes") || lowerTitle.includes("design patterns codes")) return 2;
-      
-      const lectureMatch = lowerTitle.match(/lecture (\d+)/);
-      if (lectureMatch) {
-        return 100 + parseInt(lectureMatch[1], 10);
-      }
-      
-      if (lowerTitle.includes("solid")) return 1000;
-      if (lowerTitle.includes("uml")) return 1001;
-      
-      return 9999;
-    };
+    const titleA = a.title.toLowerCase();
+    const titleB = b.title.toLowerCase();
     
-    return getOrder(a.title) - getOrder(b.title);
+    // Find index in the sortOrder array. If not found, returns -1
+    let indexA = sortOrder.findIndex(keyword => titleA.includes(keyword.toLowerCase()));
+    let indexB = sortOrder.findIndex(keyword => titleB.includes(keyword.toLowerCase()));
+    
+    // If a keyword isn't matched, push it to the end (9999)
+    if (indexA === -1) indexA = 9999;
+    if (indexB === -1) indexB = 9999;
+    
+    return indexA - indexB;
   });
 
   return (
@@ -41,9 +38,9 @@ export default function StudyMaterialsPage() {
                 <h2 className="text-lg font-semibold text-[var(--dark)] m-0 leading-tight break-words line-clamp-2">
                   {lecture.title}
                 </h2>
-                {lecture.slug.length > 1 && (
+                {lecture.subtitle && (
                   <p className="text-xs text-[var(--text-muted)] mt-2 line-clamp-1">
-                    {lecture.slug.slice(0, -1).join(' / ')}
+                    {lecture.subtitle}
                   </p>
                 )}
               </div>

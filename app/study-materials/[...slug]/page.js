@@ -1,13 +1,18 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import 'katex/dist/katex.min.css';
 import Link from 'next/link';
-import { getLectureBySlug } from '../../../lib/api';
+import { getLectureBySlug, getActiveCourseInfo } from '../../../lib/api';
 import { notFound } from 'next/navigation';
 
 export default async function LecturePage({ params }) {
   const { slug } = await params;
   
   const lecture = getLectureBySlug(slug);
+  const courseInfo = getActiveCourseInfo();
+  const folderName = courseInfo?.folderName || 'se_dp';
 
   if (!lecture) {
     notFound();
@@ -31,13 +36,14 @@ export default async function LecturePage({ params }) {
         </h1>
         <div className="markdown-body">
           <ReactMarkdown 
-            remarkPlugins={[remarkGfm]}
+            remarkPlugins={[remarkGfm, remarkMath]}
+            rehypePlugins={[rehypeKatex]}
             components={{
               img: ({ node, ...props }) => {
                 let src = props.src;
                 if (src && !src.startsWith('http') && !src.startsWith('/')) {
                   const folderPath = slug.slice(0, -1).join('/');
-                  src = `/Lectures_markdown/${folderPath ? folderPath + '/' : ''}${src}`;
+                  src = `/courses/${folderName}/lecture/${folderPath ? folderPath + '/' : ''}${src}`;
                 }
                 return <img {...props} src={src} className="max-w-full max-h-72 w-auto object-contain my-4 rounded-md mx-auto block shadow-sm border border-[var(--line)]" alt={props.alt || "Markdown image"} />;
               }

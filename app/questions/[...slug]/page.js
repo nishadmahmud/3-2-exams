@@ -1,14 +1,20 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
 import rehypeRaw from 'rehype-raw';
+import rehypeKatex from 'rehype-katex';
+import 'katex/dist/katex.min.css';
 import Link from 'next/link';
-import { getQuestionBySlug } from '../../../lib/api';
+import { getQuestionBySlug, getActiveCourseInfo } from '../../../lib/api';
 import { notFound } from 'next/navigation';
 import AnswerDropdown from '../../../components/AnswerDropdown';
 import MermaidDiagram from '../../../components/MermaidDiagram';
 
 export default async function QuestionPage({ params }) {
   const { slug } = await params;
+  
+  const courseInfo = getActiveCourseInfo();
+  const folderName = courseInfo?.folderName || 'se_dp';
   
   if (!slug || slug.length === 0) {
     return notFound();
@@ -22,7 +28,7 @@ export default async function QuestionPage({ params }) {
 
   return (
     <div className="w-full">
-      <Link href="/questions" className="text-blue-500 hover:text-blue-700 mb-6 inline-block flex items-center gap-2">
+      <Link href="/questions" className="text-blue-500 hover:text-blue-700 mb-6 inline-flex items-center gap-2">
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
         Back to Questions Bank
       </Link>
@@ -33,8 +39,8 @@ export default async function QuestionPage({ params }) {
         </h1>
         <div className="markdown-body">
           <ReactMarkdown 
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeRaw]}
+            remarkPlugins={[remarkGfm, remarkMath]}
+            rehypePlugins={[rehypeRaw, rehypeKatex]}
             components={{
               blockquote({node, children, ...props}) {
                 return <AnswerDropdown {...props}>{children}</AnswerDropdown>;
@@ -52,7 +58,7 @@ export default async function QuestionPage({ params }) {
                 let src = props.src;
                 if (src && !src.startsWith('http') && !src.startsWith('/')) {
                   const folderPath = slug.slice(0, -1).join('/');
-                  src = `/Questions/${folderPath ? folderPath + '/' : ''}${src}`;
+                  src = `/courses/${folderName}/questions/${folderPath ? folderPath + '/' : ''}${src}`;
                 }
                 return <img {...props} src={src} className="max-w-full max-h-72 w-auto object-contain my-4 rounded-md mx-auto block shadow-sm border border-[var(--line)]" alt={props.alt || "Markdown image"} />;
               }
