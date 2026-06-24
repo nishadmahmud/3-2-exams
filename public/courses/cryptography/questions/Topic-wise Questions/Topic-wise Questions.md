@@ -30,6 +30,14 @@ A comprehensive collection of questions from past examinations, organized by cry
 
 **(m)** What is virtual memory? Why is the virtual memory concept used?
 
+**(n)** Define **system integrity** in computer security. Explain how integrity differs from confidentiality with an example.
+
+**(o)** Explain the **CIA Triad** with a real-world banking system example showing how each component is protected.
+
+**(p)** A hospital system was hacked and patient data was modified without authorization.
+* Which component of the CIA triad was violated?
+* Suggest two preventive measures.
+
 ---
 
 ## 2. Classical Cryptography
@@ -42,17 +50,27 @@ A comprehensive collection of questions from past examinations, organized by cry
 
 **(d)** Perform encryption using the Rail Fence Cipher with 3 rails where **Plaintext: SHERLOCKHOMES**.
 
-**(e)** Encrypt the message **"successive"** using Playfair Cipher technique where the keyword is **"summary"**.
+**(e)** What is the transposition technique? Apply the Rail Fence technique for the plaintext **"Computer Science and Engineering"** using depth 3.
 
-**(f)** Encrypt the message **"summary"** using Playfair Cipher technique where keyword is **"monarchy"**.
+**(f)** Encrypt the message **"successive"** using Playfair Cipher technique where the keyword is **"summary"**.
 
-**(g)** Solve the below math using Polyalphabetic cipher technique<br>**Plain Text:** Engineering College<br>**Given key:** Sylhet. What is cipher text?
+**(g)** Encrypt the message **"summary"** using Playfair Cipher technique where keyword is **"monarchy"**.
 
-**(h)** Decrypt the ciphertext **"FKMFIO"** using Hill Cipher with the key matrix below:<br>$$ \begin{aligned} K = \begin{bmatrix} 2 & 3 \\ 3 & 6 \end{bmatrix} \end{aligned} $$
+**(h)** Solve the below math using Polyalphabetic cipher technique<br>**Plain Text:** Engineering College<br>**Given key:** Sylhet. What is cipher text?
 
-**(i)** In Hill cipher, let the length of the blocks, **m = 2** and a block is the string **"AB"**. $$ \begin{aligned} k = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \end{aligned} $$<br>Find the cipher text. Also show that decryption returns the given block string.
+**(i)** Decrypt the ciphertext **"FKMFIO"** using Hill Cipher with the key matrix below:<br>$$ \begin{aligned} K = \begin{bmatrix} 2 & 3 \\ 3 & 6 \end{bmatrix} \end{aligned} $$
 
-**(j)** Explain - "Though the possible substitution ciphers of English text are huge, ...
+**(j)** In Hill cipher, let the length of the blocks, **m = 2** and a block is the string **"AB"**. $$ \begin{aligned} k = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \end{aligned} $$<br>Find the cipher text. Also show that decryption returns the given block string.
+
+**(k)** Explain - "Though the possible substitution ciphers of English text are huge, ...
+
+**(l)** Explain how the **Vigenère cipher** improves security over the Caesar cipher.
+
+**(m)** Describe the **Playfair cipher** encryption technique. Why is it considered stronger than simple substitution ciphers?
+
+**(n)** Encrypt the plaintext **"SECURITY"** using the Vigenère Cipher with key **"KEY"**. Show full steps.
+
+**(o)** Encrypt the plaintext **"HIDE MONEY"** using the Playfair Cipher with the key **"MONARCHY"**. Construct the 5×5 matrix and show steps.
 
 ---
 
@@ -70,7 +88,7 @@ A comprehensive collection of questions from past examinations, organized by cry
 
 **(f)** Draw the Diagram of S-DES key generation.
 
-**(g)** Given an 8-bit plaintext 10110101 and a 10-bit key 1010100010, perform the key generation step of the S-DES algorithm and calculate the subkeys K1 and K2. Using:<br>**Permutation for p10:** 3,5,7,2,10,1,6,8,9<br>**Permutation for p8:** 7,3,6,5,9,4,10,1
+**(g)** Given an 8-bit plaintext 10110101 and a 10-bit key 1010100010, perform the key generation step of the S-DES algorithm and calculate the subkeys K1 and K2. Using:<br>**Permutation for p10:** 3,5,7,2,10,1,6,8,9,4<br>**Permutation for p8:** 7,3,6,5,9,4,10,1
 
 **(h)** Shortly explain the 4 steps involved in every round of Advanced Encryption Standard (AES).
 
@@ -83,6 +101,14 @@ A comprehensive collection of questions from past examinations, organized by cry
 **(l)** Differentiate between ECB and CBC mode along with their usability.
 
 **(m)** Which block cipher mode is not suitable for data having repeated patterns? Why?
+
+**(n)** Explain the concept of a block cipher. Discuss different types of block cipher modes of operation (**ECB, CBC, CFB, OFB**). Mention one advantage and one disadvantage of any one mode.
+
+**(o)** What is the **PKCS#5** padding method? Why is padding necessary in block cipher encryption?
+
+**(p)** A block cipher uses **8-byte** blocks. The plaintext length is **22 bytes**.
+* Apply PKCS5 padding.
+* Show the final padded length and padding bytes added.
 
 ---
 
@@ -112,6 +138,16 @@ A comprehensive collection of questions from past examinations, organized by cry
 
 **(l)** Find the elements of $Z_{56}^*$.
 
+**(m)** What is the multiplicative inverse of 15 in **$Z_{26}$**?
+
+**(n)** Find the value of **$Z^*_{56}$**.
+
+**(o)** Briefly explain how Fermat's primality test works.
+
+**(p)** Calculate **$5^{21} \pmod{13}$** using repeated squaring.
+
+**(q)** Find one primitive root modulo 11.
+
 ---
 
 ## 5. Public Key Cryptography
@@ -139,6 +175,21 @@ A comprehensive collection of questions from past examinations, organized by cry
 **(k)** Discuss the vulnerability of Diffie-Hellman to man-in-the-middle attacks and how modern network protocols mitigate it.
 
 **(l)** **P = 23, g = 5, e = 8, d = 6**, choose a Message M, random number K and perform the ELGamal encryption and decryption.
+
+**(m)** RSA security depends on the discrete logarithm problem. (True/False)
+
+**(n)** Prove the correctness of the ElGamal cryptosystem.
+
+**(o)** Show the result of an ElGamal encryption of the message **M = 9** using **k = 4** for the public key **(p, g, y) = (59, 2, 25)**.
+
+**(p)** Let us assume for RSA encryption, our public key is **n = 391**, **e = 63** and our private key is **d = 95**. We have hashed our plaintext and want to encrypt the hash value. The hash value of the plaintext is **M = 37**.
+* Find **$\varphi(n)$**.
+* Find the encrypted hash value of the plaintext **$C_H$** using RSA encryption.
+
+**(q)** Let us assume that GoodBoy wants to send a message **M = 47** to you using the ElGamal cryptosystem. You have chosen a prime number **p = 131** and a primitive root **g = 29** in **$Z_p$**. You also selected a random number **x = 111** as your secret key. GoodBoy picked a random number **k = 37**.
+* Find your public key triple which GoodBoy can use to encrypt the message.
+* Find the encrypted pair **(a,b)** of the message generated by GoodBoy.
+* Write down the equation for the decryption step you took and prove its correctness.
 
 ---
 
@@ -171,6 +222,8 @@ A comprehensive collection of questions from past examinations, organized by cry
 **(m)** Which attack can be imposed on the RSA signature? What can be used to mitigate this attack?
 
 **(n)** Find the ensurity for Hash, MAC and Digital Signature of the following properties: Authenticity, Integrity, and Non-repudiation.
+
+**(o)** What is the non-forgeability property of a digital signature?
 
 ---
 
@@ -206,6 +259,8 @@ A comprehensive collection of questions from past examinations, organized by cry
 
 **(o)** From given values answer the following question:<br>**True Positive Rate (TPR)** = 95%<br>**False Positive Rate (FPR)** = 2%<br>**Total events** = 20,000<br>**Actual attacks** = 50 (base rate = 0.25%)<br>What is the probability of a real attack?
 
+**(p)** What is the purpose of the Needham-Schroeder protocol?
+
 ---
 
 ## 8. Cryptanalysis & Miscellaneous
@@ -223,3 +278,15 @@ A comprehensive collection of questions from past examinations, organized by cry
 **(f)** Eve has an antenna that can pick up Alice's encrypted cell phone conversations. What type of attack is Eve employing? Justify your answer.
 
 **(g)** Doug's laptop computer was infected with malicious software that uses the built-in camera to record video whenever movement is detected and uploads it to a video-sharing website. What type of attack does this involve? Which concepts of computer security are violated?
+
+**(h)** Describe different types of cryptanalysis attacks. Briefly explain ciphertext-only and chosen-plaintext attacks.
+
+**(i)** What is a brute force attack? Under what conditions does brute force become practical?
+
+**(j)** An attacker intercepts encrypted messages and tries every possible key until meaningful text appears.
+* Identify the attack.
+* Which security principle is being challenged?
+
+**(k)** An organization uses weak passwords for encrypted archives. Attackers successfully guess passwords using automated tools.
+* What type of attack is this?
+* How can it be prevented?
