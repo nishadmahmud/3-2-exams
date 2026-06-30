@@ -4,14 +4,16 @@ import remarkMath from 'remark-math';
 import rehypeRaw from 'rehype-raw';
 import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
-import { getExtraBySlug, getActiveCourseInfo } from '../../lib/api';
+import { getExtraBySlug, getQuestionBySlug, getActiveCourseInfo } from '../../lib/api';
 import AnswerDropdown from '../../components/AnswerDropdown';
 import MermaidDiagram from '../../components/MermaidDiagram';
 
 export default function ExtraQuestionsPage() {
-  const question = getExtraBySlug(['Xtras_qstn']);
   const courseInfo = getActiveCourseInfo();
   const folderName = courseInfo?.folderName || 'se_dp';
+  
+  // Try to load Xtras_qstn first, and if not found (e.g. in data_science), fallback to Topic Wise
+  const question = getExtraBySlug(['Xtras_qstn']) || getQuestionBySlug(['Topic Wise', 'Topic Wise']);
 
   return (
     <div>
@@ -39,7 +41,9 @@ export default function ExtraQuestionsPage() {
                 img: ({ node, ...props }) => {
                   let src = props.src;
                   if (src && !src.startsWith('http') && !src.startsWith('/')) {
-                    src = `/courses/${folderName}/extras/${src}`;
+                    // If the question is fetched from extras, use extras path, else use questions path
+                    const basePath = getExtraBySlug(['Xtras_qstn']) ? 'extras' : 'questions/Topic Wise';
+                    src = `/courses/${folderName}/${basePath}/${src}`;
                   }
                   return <img {...props} src={src} className="max-w-full max-h-72 w-auto object-contain my-4 rounded-md mx-auto block shadow-sm border border-[var(--line)]" alt={props.alt || "Markdown image"} />;
                 }

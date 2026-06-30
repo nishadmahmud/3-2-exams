@@ -1,5 +1,5 @@
 {
-  "activeCourse": "cryptography",
+  "activeCourse": "data_science",
   "courses": {
     "se_dp": {
       "title": "Software Engineering & Design Patterns",
@@ -38,6 +38,29 @@
       "folderName": "cryptography",
       "lecturesSortOrder": [],
       "questionsSortOrder": []
+    },
+    "data_science": {
+      "title": "Data Science",
+      "shortTitle": "Data Science",
+      "folderName": "data_science",
+      "lecturesSortOrder": [
+        "Lectures 1",
+        "Lectures 2",
+        "Lectures 3",
+        "Lectures 4",
+        "Lectures 5",
+        "Lectures 6"
+      ],
+      "questionsSortOrder": [
+        "Topic Wise",
+        "TT-1",
+        "TT-2",
+        "2022 TT-1",
+        "2022 TT-2",
+        "2022 A",
+        "2022 B",
+        "2023"
+      ]
     }
   }
 }

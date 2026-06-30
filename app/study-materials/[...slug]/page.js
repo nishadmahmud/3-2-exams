@@ -4,6 +4,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
 import Link from 'next/link';
+import PdfViewer from '../../../components/PdfViewer';
 import { getLectureBySlug, getActiveCourseInfo } from '../../../lib/api';
 import { notFound } from 'next/navigation';
 
@@ -35,22 +36,26 @@ export default async function LecturePage({ params }) {
           {lecture.title}
         </h1>
         <div className="markdown-body">
-          <ReactMarkdown 
-            remarkPlugins={[remarkGfm, remarkMath]}
-            rehypePlugins={[rehypeKatex]}
-            components={{
-              img: ({ node, ...props }) => {
-                let src = props.src;
-                if (src && !src.startsWith('http') && !src.startsWith('/')) {
-                  const folderPath = slug.slice(0, -1).join('/');
-                  src = `/courses/${folderName}/lecture/${folderPath ? folderPath + '/' : ''}${src}`;
+          {lecture.isPdf ? (
+            <PdfViewer url={lecture.fileUrl} />
+          ) : (
+            <ReactMarkdown 
+              remarkPlugins={[remarkGfm, remarkMath]}
+              rehypePlugins={[rehypeKatex]}
+              components={{
+                img: ({ node, ...props }) => {
+                  let src = props.src;
+                  if (src && !src.startsWith('http') && !src.startsWith('/')) {
+                    const folderPath = slug.slice(0, -1).join('/');
+                    src = `/courses/${folderName}/lecture/${folderPath ? folderPath + '/' : ''}${src}`;
+                  }
+                  return <img {...props} src={src} className="max-w-full max-h-72 w-auto object-contain my-4 rounded-md mx-auto block shadow-sm border border-[var(--line)]" alt={props.alt || "Markdown image"} />;
                 }
-                return <img {...props} src={src} className="max-w-full max-h-72 w-auto object-contain my-4 rounded-md mx-auto block shadow-sm border border-[var(--line)]" alt={props.alt || "Markdown image"} />;
-              }
-            }}
-          >
-            {lecture.content}
-          </ReactMarkdown>
+              }}
+            >
+              {lecture.content}
+            </ReactMarkdown>
+          )}
         </div>
       </div>
     </div>
