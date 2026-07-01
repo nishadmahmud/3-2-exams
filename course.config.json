@@ -60,7 +60,15 @@
         "2022 A",
         "2022 B",
         "2023"
-      ]
+      ],
+      "lectureSubtitles": {
+        "Lectures 1": "Introduction to Data Science",
+        "Lectures 2": "Process and EDA",
+        "Lectures 3": "Machine Learning & Algorithms",
+        "Lectures 4": "Machine Learning (Extended)",
+        "Lectures 5": "Natural Language Processing (NLP)",
+        "Lectures 6": "Deep Learning Networks & NLP"
+      }
     }
   }
 }
