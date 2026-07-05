@@ -89,6 +89,22 @@
         "TT-2"
       ],
       "lectureSubtitles": {}
+    },
+    "compiler": {
+      "title": "Compiler Design",
+      "shortTitle": "Compiler Design",
+      "folderName": "compiler",
+      "lecturesSortOrder": [],
+      "questionsSortOrder": [
+        "TT-1",
+        "TT-2",
+        "2023",
+        "2022",
+        "2022 TT-1",
+        "2022 TT-2",
+        "2021"
+      ],
+      "lectureSubtitles": {}
     }
   }
 }
