@@ -12,8 +12,8 @@ export default function ExtraQuestionsPage() {
   const courseInfo = getActiveCourseInfo();
   const folderName = courseInfo?.folderName || 'se_dp';
   
-  // Try to load Xtras_qstn first, and if not found (e.g. in data_science), fallback to Topic Wise
-  const question = getExtraBySlug(['Xtras_qstn']) || getQuestionBySlug(['Topic Wise', 'Topic Wise']);
+  // Try to load Math_Problems, then Xtras_qstn, and if not found (e.g. in data_science), fallback to Topic Wise
+  const question = getExtraBySlug(['Math_Problems']) || getExtraBySlug(['Xtras_qstn']) || getQuestionBySlug(['Topic Wise', 'Topic Wise']);
 
   return (
     <div>

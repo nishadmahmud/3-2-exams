@@ -2,6 +2,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
 import 'katex/dist/katex.min.css';
 import Link from 'next/link';
 import PdfViewer from '../../../components/PdfViewer';
@@ -41,7 +42,7 @@ export default async function LecturePage({ params }) {
           ) : (
             <ReactMarkdown 
               remarkPlugins={[remarkGfm, remarkMath]}
-              rehypePlugins={[rehypeKatex]}
+              rehypePlugins={[rehypeRaw, rehypeKatex]}
               components={{
                 img: ({ node, ...props }) => {
                   let src = props.src;

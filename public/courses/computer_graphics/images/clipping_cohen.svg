@@ -1,0 +1,46 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Grid Lines -->
+  <line x1="120" y1="0" x2="120" y2="300" stroke="gray" stroke-dasharray="4"/>
+  <line x1="280" y1="0" x2="280" y2="300" stroke="gray" stroke-dasharray="4"/>
+  <line x1="0" y1="100" x2="400" y2="100" stroke="gray" stroke-dasharray="4"/>
+  <line x1="0" y1="200" x2="400" y2="200" stroke="gray" stroke-dasharray="4"/>
+  
+  <!-- Clipping Window -->
+  <rect x="120" y="100" width="160" height="100" fill="none" stroke="black" stroke-width="2"/>
+  
+  <!-- Labels -->
+  <text x="50" y="50" fill="gray">1001</text>
+  <text x="180" y="50" fill="gray">1000</text>
+  <text x="310" y="50" fill="gray">1010</text>
+  
+  <text x="50" y="150" fill="gray">0001</text>
+  <text x="180" y="150" fill="black">0000</text>
+  <text x="310" y="150" fill="gray">0010</text>
+  
+  <text x="50" y="250" fill="gray">0101</text>
+  <text x="180" y="250" fill="gray">0100</text>
+  <text x="310" y="250" fill="gray">0110</text>
+
+  <!-- Lines and Points -->
+  <!-- P1-P2 (Left, outside) -->
+  <line x1="80" y1="120" x2="80" y2="180" stroke="red" stroke-width="2"/>
+  <circle cx="80" cy="120" r="3"/><text x="60" y="115">P₁</text>
+  <circle cx="80" cy="180" r="3"/><text x="60" y="195">P₂</text>
+
+  <!-- P3-P4 (Inside) -->
+  <line x1="150" y1="130" x2="230" y2="170" stroke="green" stroke-width="2"/>
+  <circle cx="150" cy="130" r="3"/><text x="135" y="125">P₃</text>
+  <circle cx="230" cy="170" r="3"/><text x="235" y="180">P₄</text>
+
+  <!-- P5-P6 (Top intersection) -->
+  <line x1="200" y1="40" x2="250" y2="150" stroke="blue" stroke-width="2"/>
+  <circle cx="200" cy="40" r="3"/><text x="180" y="35">P₅</text>
+  <circle cx="250" cy="150" r="3"/><text x="255" y="160">P₆</text>
+  <circle cx="227" cy="100" r="3" fill="blue"/><text x="235" y="95" fill="blue">P₅'</text>
+
+  <!-- P7-P8 (Corner crossing) -->
+  <line x1="330" y1="140" x2="220" y2="250" stroke="purple" stroke-width="2"/>
+  <circle cx="330" cy="140" r="3"/><text x="335" y="135">P₇</text>
+  <circle cx="220" cy="250" r="3"/><text x="200" y="260">P₈</text>
+  <circle cx="280" cy="190" r="3" fill="purple"/><text x="290" y="200" fill="purple">P₇'</text>
+</svg>

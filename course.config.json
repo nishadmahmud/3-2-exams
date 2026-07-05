@@ -1,5 +1,5 @@
 {
-  "activeCourse": "data_science",
+  "activeCourse": "computer_graphics",
   "courses": {
     "se_dp": {
       "title": "Software Engineering & Design Patterns",
@@ -69,6 +69,26 @@
         "Lectures 5": "Natural Language Processing (NLP)",
         "Lectures 6": "Deep Learning Networks & NLP"
       }
+    },
+    "computer_graphics": {
+      "title": "Computer Graphics",
+      "shortTitle": "Computer Graphics",
+      "folderName": "computer_graphics",
+      "lecturesSortOrder": [
+        "1_Introduction_and_Basic_Concepts",
+        "2_Color_Models",
+        "3_Drawing_Algorithms",
+        "4_Geometric_Transformations",
+        "5_Clipping_Algorithms",
+        "6_Curves_and_Splines",
+        "7_Assignment"
+      ],
+      "questionsSortOrder": [
+        "2021",
+        "TT-1",
+        "TT-2"
+      ],
+      "lectureSubtitles": {}
     }
   }
 }

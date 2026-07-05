@@ -1,0 +1,19 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect x="100" y="100" width="200" height="100" fill="none" stroke="gray"/>
+  <line x1="0" y1="200" x2="400" y2="200" stroke="black" stroke-dasharray="4"/>
+  <!-- Previous polygon in pale red -->
+  <polygon points="135,100 200,100 200,150 300,150 300,173 200,250 100,173 100,127" fill="none" stroke="#ffcccc" stroke-width="1"/>
+  <!-- Clipped polygon: Bottom side chopped off -->
+  <polygon points="135,100 200,100 200,150 300,150 300,173 265,200 135,200 100,173 100,127" fill="none" stroke="red" stroke-width="2"/>
+  
+  <text x="205" y="95" fill="black">B'</text>
+  <text x="135" y="95" fill="black">A''</text>
+  <text x="205" y="145" fill="black">B</text>
+  <text x="305" y="145" fill="black">C'</text>
+  <text x="305" y="185" fill="black">D'</text>
+  <text x="275" y="215" fill="black">D''</text>
+  <text x="195" y="265" fill="gray">D</text>
+  <text x="135" y="215" fill="black">E''</text>
+  <text x="105" y="185" fill="black">E'</text>
+  <text x="105" y="125" fill="black">A'</text>
+</svg>

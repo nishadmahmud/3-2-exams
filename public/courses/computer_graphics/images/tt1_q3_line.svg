@@ -1,0 +1,64 @@
+<svg width="540" height="420" viewBox="0 0 540 420" xmlns="http://www.w3.org/2000/svg">
+  <!-- Grid Lines -->
+  <!-- Horizontal -->
+  <line x1="40" y1="40" x2="520" y2="40" stroke="lightgray"/>
+  <line x1="40" y1="80" x2="520" y2="80" stroke="lightgray"/>
+  <line x1="40" y1="120" x2="520" y2="120" stroke="lightgray"/>
+  <line x1="40" y1="160" x2="520" y2="160" stroke="lightgray"/>
+  <line x1="40" y1="200" x2="520" y2="200" stroke="lightgray"/>
+  <line x1="40" y1="240" x2="520" y2="240" stroke="lightgray"/>
+  <line x1="40" y1="280" x2="520" y2="280" stroke="lightgray"/>
+  <line x1="40" y1="320" x2="520" y2="320" stroke="lightgray"/>
+  <line x1="40" y1="360" x2="520" y2="360" stroke="black" stroke-width="2"/> <!-- X Axis -->
+
+  <!-- Vertical -->
+  <line x1="40" y1="40" x2="40" y2="360" stroke="black" stroke-width="2"/> <!-- Y Axis -->
+  <line x1="80" y1="40" x2="80" y2="360" stroke="lightgray"/>
+  <line x1="120" y1="40" x2="120" y2="360" stroke="lightgray"/>
+  <line x1="160" y1="40" x2="160" y2="360" stroke="lightgray"/>
+  <line x1="200" y1="40" x2="200" y2="360" stroke="lightgray"/>
+  <line x1="240" y1="40" x2="240" y2="360" stroke="lightgray"/>
+  <line x1="280" y1="40" x2="280" y2="360" stroke="lightgray"/>
+  <line x1="320" y1="40" x2="320" y2="360" stroke="lightgray"/>
+  <line x1="360" y1="40" x2="360" y2="360" stroke="lightgray"/>
+  <line x1="400" y1="40" x2="400" y2="360" stroke="lightgray"/>
+  <line x1="440" y1="40" x2="440" y2="360" stroke="lightgray"/>
+  <line x1="480" y1="40" x2="480" y2="360" stroke="lightgray"/>
+  <line x1="520" y1="40" x2="520" y2="360" stroke="lightgray"/>
+
+  <!-- Axis Labels -->
+  <!-- X Axis -->
+  <text x="55" y="380">0</text><text x="95" y="380">1</text><text x="135" y="380">2</text>
+  <text x="175" y="380">3</text><text x="215" y="380">4</text><text x="255" y="380">5</text>
+  <text x="295" y="380">6</text><text x="335" y="380">7</text><text x="375" y="380">8</text>
+  <text x="415" y="380">9</text><text x="450" y="380">10</text><text x="490" y="380">11</text>
+  
+  <!-- Y Axis -->
+  <text x="20" y="345">0</text><text x="20" y="305">1</text><text x="20" y="265">2</text>
+  <text x="20" y="225">3</text><text x="20" y="185">4</text><text x="20" y="145">5</text>
+  <text x="20" y="105">6</text><text x="20" y="65">7</text>
+
+  <!-- Highlighted Pixels (Rectangles) -->
+  <!-- Formula: x_SVG = 40 + x_math*40. y_SVG = 360 - (y_math+1)*40 -->
+  <g fill="lightblue" stroke="blue" stroke-width="2">
+    <rect x="120" y="200" width="40" height="40" /> <!-- (2,3) -> x=2*40+40=120. y=360-(3+1)*40=360-160=200 -->
+    <rect x="160" y="160" width="40" height="40" /> <!-- (3,4) -->
+    <rect x="200" y="160" width="40" height="40" /> <!-- (4,4) -->
+    <rect x="240" y="120" width="40" height="40" /> <!-- (5,5) -->
+    <rect x="280" y="120" width="40" height="40" /> <!-- (6,5) -->
+    <rect x="320" y="80" width="40" height="40" />  <!-- (7,6) -->
+    <rect x="360" y="80" width="40" height="40" />  <!-- (8,6) -->
+    <rect x="400" y="40" width="40" height="40" />  <!-- (9,7) -->
+    <rect x="440" y="40" width="40" height="40" />  <!-- (10,7) -->
+  </g>
+
+  <!-- Ideal Line from (2,3) to (10,7) -->
+  <!-- Centers of pixels: x_center = x_SVG + 20, y_center = y_SVG + 20 -->
+  <!-- Start: (120+20, 200+20) = (140, 220) -->
+  <!-- End: (440+20, 40+20) = (460, 60) -->
+  <line x1="140" y1="220" x2="460" y2="60" stroke="red" stroke-width="2" />
+  
+  <circle cx="140" cy="220" r="4" fill="red" />
+  <circle cx="460" cy="60" r="4" fill="red" />
+
+</svg>

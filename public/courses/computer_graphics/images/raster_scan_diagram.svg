@@ -1,0 +1,60 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Screen boundary -->
+  <rect x="50" y="50" width="300" height="200" fill="none" stroke="black" stroke-width="1.5"/>
+
+  <!-- Arrow Marker -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="black" />
+    </marker>
+  </defs>
+
+  <!-- Start of scan text -->
+  <text x="50" y="30" font-family="sans-serif" font-size="14">Start of</text>
+  <text x="50" y="45" font-family="sans-serif" font-size="14">scan</text>
+  <path d="M 50 50 L 55 65" fill="none" stroke="black" marker-end="url(#arrow)"/>
+
+  <!-- Scan Lines -->
+  <!-- Line 1 -->
+  <path d="M 60 70 L 340 70" fill="none" stroke="black" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 340 70 L 60 90" fill="none" stroke="black" stroke-dasharray="4" marker-end="url(#arrow)"/>
+
+  <!-- Line 2 -->
+  <path d="M 60 90 L 340 90" fill="none" stroke="black" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 340 90 L 60 110" fill="none" stroke="black" stroke-dasharray="4" marker-end="url(#arrow)"/>
+
+  <!-- Line 3 -->
+  <path d="M 60 110 L 340 110" fill="none" stroke="black" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 340 110 L 60 130" fill="none" stroke="black" stroke-dasharray="4" marker-end="url(#arrow)"/>
+
+  <!-- Line 4 -->
+  <path d="M 60 130 L 340 130" fill="none" stroke="black" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 340 130 L 60 150" fill="none" stroke="black" stroke-dasharray="4" marker-end="url(#arrow)"/>
+
+  <!-- Line 5 -->
+  <path d="M 60 150 L 340 150" fill="none" stroke="black" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 340 150 L 60 170" fill="none" stroke="black" stroke-dasharray="4" marker-end="url(#arrow)"/>
+
+  <!-- Line 6 -->
+  <path d="M 60 170 L 340 170" fill="none" stroke="black" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 340 170 L 60 190" fill="none" stroke="black" stroke-dasharray="4" marker-end="url(#arrow)"/>
+
+  <!-- Line 7 -->
+  <path d="M 60 190 L 340 190" fill="none" stroke="black" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 340 190 L 60 210" fill="none" stroke="black" stroke-dasharray="4" marker-end="url(#arrow)"/>
+
+  <!-- Line 8 -->
+  <path d="M 60 210 L 340 210" fill="none" stroke="black" stroke-width="1.5" marker-end="url(#arrow)"/>
+  
+  <!-- Vertical Retrace -->
+  <path d="M 340 210 L 60 70" fill="none" stroke="black" stroke-width="2" stroke-dasharray="6" marker-end="url(#arrow)"/>
+  
+  <!-- Labels -->
+  <text x="360" y="135" font-family="sans-serif" font-size="14">Horizontal</text>
+  <text x="360" y="150" font-family="sans-serif" font-size="14">Scan</text>
+  <path d="M 420 142 L 350 142" fill="none" stroke="black" marker-end="url(#arrow)"/> <!-- pointing to horizontal lines -->
+
+  <text x="200" y="270" font-family="sans-serif" font-size="14" text-anchor="middle">Vertical Retrace</text>
+  <text x="200" y="285" font-family="sans-serif" font-size="14" text-anchor="middle">(to next line)</text>
+  <path d="M 200 250 L 200 230" fill="none" stroke="black" marker-end="url(#arrow)"/> <!-- pointing to vertical retrace -->
+</svg>

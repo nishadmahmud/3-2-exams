@@ -1,0 +1,41 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Axes -->
+  <line x1="50" y1="250" x2="350" y2="250" stroke="black" stroke-width="1.5" marker-end="url(#arrow)"/> <!-- X Axis -->
+  <line x1="50" y1="250" x2="50" y2="50" stroke="black" stroke-width="1.5" marker-end="url(#arrow)"/> <!-- Y Axis -->
+
+  <!-- Axis Labels -->
+  <text x="35" y="265" font-family="sans-serif" font-size="14">(0,0)</text>
+  <text x="360" y="255" font-family="sans-serif" font-size="14">X</text>
+  <text x="45" y="40" font-family="sans-serif" font-size="14">Y</text>
+
+  <!-- Arrow Marker -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="black" />
+    </marker>
+  </defs>
+
+  <!-- Vector Path -->
+  <!-- Points mapped: P1(100,100)->(90,210), P2(400,150)->(290,190), P3(500,350)->(330,110), P4(200,400)->(130,90) -->
+  <path d="M 90 210 L 290 190" fill="none" stroke="black" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 290 190 L 330 110" fill="none" stroke="black" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 330 110 L 130 90" fill="none" stroke="black" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 130 90 L 90 210" fill="none" stroke="black" stroke-width="1.5" stroke-dasharray="5" marker-end="url(#arrow)"/>
+
+  <!-- Points -->
+  <circle cx="90" cy="210" r="3" fill="black"/>
+  <text x="100" y="220" font-family="sans-serif" font-size="14">P₁ (100, 100)</text>
+
+  <circle cx="290" cy="190" r="3" fill="black"/>
+  <text x="300" y="200" font-family="sans-serif" font-size="14">P₂ (400, 150)</text>
+
+  <circle cx="330" cy="110" r="3" fill="black"/>
+  <text x="340" y="105" font-family="sans-serif" font-size="14">P₃ (500, 350)</text>
+
+  <circle cx="130" cy="90" r="3" fill="black"/>
+  <text x="140" y="80" font-family="sans-serif" font-size="14">P₄ (200, 400)</text>
+
+  <!-- Caption -->
+  <text x="50" y="280" font-family="sans-serif" font-size="14">Electron beam moves from one point</text>
+  <text x="50" y="295" font-family="sans-serif" font-size="14">to another to draw the required vectors.</text>
+</svg>

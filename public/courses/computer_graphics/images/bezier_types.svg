@@ -1,0 +1,30 @@
+<svg width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Simple -->
+  <line x1="50" y1="150" x2="150" y2="50" stroke="blue" stroke-width="2"/>
+  <circle cx="50" cy="150" r="4"/><text x="30" y="160">P₀</text>
+  <circle cx="150" cy="50" r="4"/><text x="160" y="50">P₁</text>
+  <text x="60" y="180" font-weight="bold">1. Simple (Linear)</text>
+  <text x="75" y="195" font-size="12">Control=2, Deg=1</text>
+
+  <!-- Quadratic -->
+  <line x1="250" y1="150" x2="300" y2="50" stroke="gray" stroke-dasharray="4"/>
+  <line x1="300" y1="50" x2="350" y2="150" stroke="gray" stroke-dasharray="4"/>
+  <path d="M 250 150 Q 300 50 350 150" fill="none" stroke="blue" stroke-width="2"/>
+  <circle cx="250" cy="150" r="4"/><text x="230" y="160">P₀</text>
+  <circle cx="300" cy="50" r="4"/><text x="310" y="45">P₁</text>
+  <circle cx="350" cy="150" r="4"/><text x="360" y="160">P₂</text>
+  <text x="265" y="180" font-weight="bold">2. Quadratic</text>
+  <text x="270" y="195" font-size="12">Control=3, Deg=2</text>
+
+  <!-- Cubic -->
+  <line x1="450" y1="150" x2="480" y2="50" stroke="gray" stroke-dasharray="4"/>
+  <line x1="480" y1="50" x2="520" y2="50" stroke="gray" stroke-dasharray="4"/>
+  <line x1="520" y1="50" x2="550" y2="150" stroke="gray" stroke-dasharray="4"/>
+  <path d="M 450 150 C 480 50, 520 50, 550 150" fill="none" stroke="blue" stroke-width="2"/>
+  <circle cx="450" cy="150" r="4"/><text x="430" y="160">P₀</text>
+  <circle cx="480" cy="50" r="4"/><text x="470" y="40">P₁</text>
+  <circle cx="520" cy="50" r="4"/><text x="530" y="40">P₂</text>
+  <circle cx="550" cy="150" r="4"/><text x="560" y="160">P₃</text>
+  <text x="475" y="180" font-weight="bold">3. Cubic</text>
+  <text x="470" y="195" font-size="12">Control=4, Deg=3</text>
+</svg>

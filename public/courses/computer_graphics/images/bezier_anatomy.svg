@@ -1,0 +1,25 @@
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Convex Hull -->
+  <polygon points="50,150 150,50 300,80 350,150" fill="none" stroke="gray" stroke-dasharray="4"/>
+  
+  <!-- Control Lines -->
+  <line x1="50" y1="150" x2="150" y2="50" stroke="gray" stroke-dasharray="4"/>
+  <line x1="150" y1="50" x2="300" y2="80" stroke="gray" stroke-dasharray="4"/>
+  <line x1="300" y1="80" x2="350" y2="150" stroke="gray" stroke-dasharray="4"/>
+  
+  <!-- The Curve -->
+  <path d="M 50 150 C 150 50, 300 80, 350 150" fill="none" stroke="blue" stroke-width="3"/>
+  
+  <!-- Points -->
+  <circle cx="50" cy="150" r="4" fill="black"/><text x="25" y="160">P₁</text>
+  <circle cx="150" cy="50" r="4" fill="black"/><text x="135" y="40">P₂</text>
+  <circle cx="300" cy="80" r="4" fill="black"/><text x="310" y="75">P₃</text>
+  <circle cx="350" cy="150" r="4" fill="black"/><text x="360" y="160">P₄</text>
+
+  <!-- Labels -->
+  <text x="20" y="180" font-weight="bold" fill="blue">Anchor</text>
+  <text x="130" y="25" font-weight="bold" fill="gray">Handle</text>
+  <text x="290" y="55" font-weight="bold" fill="gray">Handle</text>
+  <text x="340" y="180" font-weight="bold" fill="blue">Anchor</text>
+  <text x="180" y="100" font-weight="bold" fill="gray">Convex Hull</text>
+</svg>

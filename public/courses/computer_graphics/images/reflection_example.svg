@@ -1,0 +1,31 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Axes -->
+  <line x1="50" y1="200" x2="350" y2="200" stroke="black" stroke-width="1.5" marker-end="url(#arrow)"/> <!-- X Axis (Mirror) -->
+  <line x1="200" y1="350" x2="200" y2="50" stroke="black" stroke-width="1.5" marker-end="url(#arrow)"/> <!-- Y Axis -->
+  
+  <text x="360" y="205">Mirror (X-axis)</text>
+
+  <!-- Arrow Marker -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="black" />
+    </marker>
+  </defs>
+
+  <!-- Original Triangle A(3,4), B(6,4), C(5,6) -->
+  <polygon points="260,120 320,120 300,80" fill="lightblue" stroke="blue" stroke-width="2"/>
+  <text x="240" y="125">A(3,4)</text>
+  <text x="325" y="125">B(6,4)</text>
+  <text x="290" y="70">C(5,6)</text>
+
+  <!-- Reflected Triangle A'(3,-4), B'(6,-4), C'(5,-6) -->
+  <polygon points="260,280 320,280 300,320" fill="lightpink" stroke="red" stroke-width="2"/>
+  <text x="235" y="275">A'(3,-4)</text>
+  <text x="325" y="275">B'(6,-4)</text>
+  <text x="285" y="340">C'(5,-6)</text>
+
+  <!-- Connecting dashed lines -->
+  <line x1="260" y1="120" x2="260" y2="280" stroke="gray" stroke-dasharray="4"/>
+  <line x1="320" y1="120" x2="320" y2="280" stroke="gray" stroke-dasharray="4"/>
+  <line x1="300" y1="80" x2="300" y2="320" stroke="gray" stroke-dasharray="4"/>
+</svg>

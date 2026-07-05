@@ -1,0 +1,16 @@
+<svg width="250" height="200" viewBox="0 0 250 200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="50" y="20" width="100" height="100" fill="none" stroke="gray"/>
+  <line x1="50" y1="0" x2="50" y2="150" stroke="black" stroke-dasharray="4"/>
+  <!-- Original parts outside in pale red, inside parts solid -->
+  <polygon points="100,0 180,60 120,140 20,90 70,50" fill="none" stroke="#ffcccc" stroke-width="1"/>
+  <!-- Clipped polygon: Left side chopped off -->
+  <polygon points="100,0 180,60 120,140 50,105 50,66 70,50" fill="none" stroke="red" stroke-width="2"/>
+  
+  <text x="95" y="15" fill="black">A</text>
+  <text x="185" y="65" fill="black">B</text>
+  <text x="125" y="150" fill="black">C</text>
+  <text x="55" y="115" fill="black">C'</text>
+  <text x="55" y="60" fill="black">D'</text>
+  <text x="10" y="95" fill="gray">D</text>
+  <text x="75" y="45" fill="black">E</text>
+</svg>
