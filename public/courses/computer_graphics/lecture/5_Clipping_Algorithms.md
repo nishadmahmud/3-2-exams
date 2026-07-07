@@ -207,13 +207,59 @@ Consider a polygon with vertices ABCDE. A polygon is clipped against the 4 bound
 ### Weiler-Atherton Polygon Clipping Algorithm
 The Weiler-Atherton algorithm handles concave polygons and polygons with holes by tracing around the boundaries instead of sequential edge clipping.
 
-**Step 1:** First, create a list of intersection points that are in the starting or ending state.
-**Step 2:** Create two more lists: one for the object polygon and another for the clip polygon. Fill both lists with intersection points and vertices of the polygon.
-**Step 3:** Insert the vertices in both lists in such a way that the intersection point exists between the connected vertices.
-**Step 4:** Start from the first vertex of the object polygon. Select the first intersection point as an entering point and follow the same process until we reach the exiting point.
-**Step 5:** Move from the clip polygon list to the subject polygon list and search for the finishing intersection point. Repeat the process until we find the entering point.
-**Step 6:** Now the polygon is being clipped. Repeat the same process until each point has been visited once.
+**Step 1:** First, create a list of intersection points that are in the starting or ending state.<br>
+**Step 2:** Create two more lists: one for the object polygon and another for the clip polygon. Fill both lists with intersection points and vertices of the polygon.<br>
+**Step 3:** Insert the vertices in both lists in such a way that the intersection point exists between the connected vertices.<br>
+**Step 4:** Start from the first vertex of the object polygon. Select the first intersection point as an entering point and follow the same process until we reach the exiting point.<br>
+**Step 5:** Move from the clip polygon list to the subject polygon list and search for the finishing intersection point. Repeat the process until we find the entering point.<br>
+**Step 6:** Now the polygon is being clipped. Repeat the same process until each point has been visited once.<br>
 **Step 7:** Stop.
+
+#### Example: Weiler-Atherton Algorithm
+
+Imagine a triangular **Subject Polygon** ($S_1, S_2, S_3$ in clockwise order) overlapping a rectangular **Clip Polygon** ($C_1, C_2, C_3, C_4$ in clockwise order). They intersect at two points: $I_1$ (where the subject enters the clip region) and $I_2$ (where the subject exits the clip region).
+
+<div align="center">
+  <img src="/courses/computer_graphics/images/weiler_atherton_example.svg" alt="Weiler-Atherton Visualization" />
+</div>
+
+1. **Generate Lists with Intersections:**
+   - **Subject List:** $S_1 \rightarrow S_2 \rightarrow \textbf{I}_1 \text{ (enter)} \rightarrow S_3 \rightarrow \textbf{I}_2 \text{ (exit)} \rightarrow S_1$
+   - **Clip List:** $C_1 \rightarrow \textbf{I}_2 \rightarrow C_2 \rightarrow C_3 \rightarrow \textbf{I}_1 \rightarrow C_4 \rightarrow C_1$
+
+2. **Tracing to Find Clipped Area (Intersection):**
+   - **Start** at the entering intersection in the Subject List: $I_1$.
+   - **Follow Subject List** to the next exiting intersection: $I_1 \rightarrow S_3 \rightarrow I_2$.
+   - **Switch to Clip List** at $I_2$ and follow it (in the same direction) until you reach $I_1$ again: $I_2 \rightarrow C_2 \rightarrow C_3 \rightarrow I_1$.
+   - **Close Polygon.** The final clipped shape is formed by the vertices: **$I_1, S_3, I_2, C_2, C_3$**.
+
+#### Example 2: Concave Polygon (Multi-Fragment Clipping)
+
+When a concave polygon is clipped, the Weiler-Atherton algorithm elegantly separates it into multiple distinct clipped polygons. 
+
+Consider a concave **Subject Polygon** ($A, B, C, D, E, F, G$) overlapping a rectangular **Clip Polygon** ($C_1, C_2, C_3, C_4$). They intersect at four points: $A'$ (enter), $D'$ (exit), $E'$ (enter), and $F'$ (exit).
+
+<div align="center">
+  <img src="/courses/computer_graphics/images/weiler_atherton_example_2.svg" alt="Weiler-Atherton Concave Visualization" />
+</div>
+
+1. **Generate Lists with Intersections:**
+   - **Subject List:** $A \rightarrow \textbf{A}' \text{ (enter)} \rightarrow B \rightarrow C \rightarrow \textbf{D}' \text{ (exit)} \rightarrow D \rightarrow \textbf{E}' \text{ (enter)} \rightarrow E \rightarrow F \rightarrow \textbf{F}' \text{ (exit)} \rightarrow G \rightarrow A$
+   - **Clip List (Clockwise):** $C_1 \rightarrow \textbf{F}' \rightarrow \textbf{E}' \rightarrow \textbf{D}' \rightarrow \textbf{A}' \rightarrow C_2 \rightarrow C_3 \rightarrow C_4 \rightarrow C_1$
+
+2. **Tracing to Find Clipped Area (Intersection):**
+   - **Iteration 1:**
+     - **Start** at the first entering intersection: $A'$.
+     - **Follow Subject List** to next exit: $A' \rightarrow B \rightarrow C \rightarrow D'$.
+     - **Switch to Clip List** and follow it clockwise: From $D'$, the next point in the clip list is $A'$. So $D' \rightarrow A'$.
+     - **Polygon 1 Complete:** $A', B, C, D'$
+   - **Iteration 2:**
+     - **Start** at the next unvisited entering intersection: $E'$.
+     - **Follow Subject List** to next exit: $E' \rightarrow E \rightarrow F \rightarrow F'$.
+     - **Switch to Clip List** and follow it clockwise: From $F'$, the next point in the clip list is $E'$. So $F' \rightarrow E'$.
+     - **Polygon 2 Complete:** $E', E, F, F'$
+
+**Final Answer:** The intersection results in two separate polygons: $\{A', B, C, D'\}$ and $\{E', E, F, F'\}$.
 
 ---
 

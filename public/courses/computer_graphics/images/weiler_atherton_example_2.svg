@@ -1,0 +1,79 @@
+<svg width="500" height="450" viewBox="0 0 500 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Defs for arrows -->
+  <defs>
+    <marker id="arrow-clip" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto">
+      <path d="M2,3 L2,9 L10,6 z" fill="#00acc1" />
+    </marker>
+    <marker id="arrow-subj" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto">
+      <path d="M2,3 L2,9 L10,6 z" fill="#ff5722" />
+    </marker>
+  </defs>
+
+  <!-- Clip Polygon Fill -->
+  <polygon points="240,400 240,50 450,50 450,400" fill="#e0f7fa" stroke="none" />
+  
+  <!-- Subject Polygon Fill -->
+  <polygon points="100,100 300,100 300,200 180,225 300,250 300,350 100,350" fill="rgba(255, 138, 101, 0.3)" stroke="none" />
+
+  <!-- Intersection Highlight Polygon 1 (The Result 1) -->
+  <polygon points="240,100 300,100 300,200 240,212.5" fill="rgba(76, 175, 80, 0.4)" stroke="#2e7d32" stroke-width="3" stroke-dasharray="6 4" />
+  <!-- Intersection Highlight Polygon 2 (The Result 2) -->
+  <polygon points="240,237.5 300,250 300,350 240,350" fill="rgba(76, 175, 80, 0.4)" stroke="#2e7d32" stroke-width="3" stroke-dasharray="6 4" />
+
+  <!-- Clip Polygon Edges with Direction Arrows -->
+  <path d="M 240,400 L 240,225 L 240,50" marker-mid="url(#arrow-clip)" stroke="#00acc1" fill="none" stroke-width="2" stroke-dasharray="5 5"/>
+  <path d="M 240,50 L 345,50 L 450,50" marker-mid="url(#arrow-clip)" stroke="#00acc1" fill="none" stroke-width="2" stroke-dasharray="5 5"/>
+  <path d="M 450,50 L 450,225 L 450,400" marker-mid="url(#arrow-clip)" stroke="#00acc1" fill="none" stroke-width="2" stroke-dasharray="5 5"/>
+  <path d="M 450,400 L 345,400 L 240,400" marker-mid="url(#arrow-clip)" stroke="#00acc1" fill="none" stroke-width="2" stroke-dasharray="5 5"/>
+
+  <!-- Subject Polygon Edges with Direction Arrows -->
+  <path d="M 100,100 L 200,100 L 300,100" marker-mid="url(#arrow-subj)" stroke="#ff5722" fill="none" stroke-width="2" />
+  <path d="M 300,100 L 300,150 L 300,200" marker-mid="url(#arrow-subj)" stroke="#ff5722" fill="none" stroke-width="2" />
+  <path d="M 300,200 L 240,212.5 L 180,225" marker-mid="url(#arrow-subj)" stroke="#ff5722" fill="none" stroke-width="2" />
+  <path d="M 180,225 L 240,237.5 L 300,250" marker-mid="url(#arrow-subj)" stroke="#ff5722" fill="none" stroke-width="2" />
+  <path d="M 300,250 L 300,300 L 300,350" marker-mid="url(#arrow-subj)" stroke="#ff5722" fill="none" stroke-width="2" />
+  <path d="M 300,350 L 200,350 L 100,350" marker-mid="url(#arrow-subj)" stroke="#ff5722" fill="none" stroke-width="2" />
+  <path d="M 100,350 L 100,225 L 100,100" marker-mid="url(#arrow-subj)" stroke="#ff5722" fill="none" stroke-width="2" />
+
+  <!-- Subject Vertices -->
+  <circle cx="100" cy="100" r="5" fill="#ff5722" />
+  <circle cx="300" cy="100" r="5" fill="#ff5722" />
+  <circle cx="300" cy="200" r="5" fill="#ff5722" />
+  <circle cx="180" cy="225" r="5" fill="#ff5722" />
+  <circle cx="300" cy="250" r="5" fill="#ff5722" />
+  <circle cx="300" cy="350" r="5" fill="#ff5722" />
+  <circle cx="100" cy="350" r="5" fill="#ff5722" />
+
+  <!-- Clip Vertices -->
+  <circle cx="240" cy="400" r="5" fill="#00acc1" />
+  <circle cx="240" cy="50" r="5" fill="#00acc1" />
+  <circle cx="450" cy="50" r="5" fill="#00acc1" />
+  <circle cx="450" cy="400" r="5" fill="#00acc1" />
+
+  <!-- Intersections -->
+  <circle cx="240" cy="100" r="6" fill="#4caf50" stroke="#fff" stroke-width="2" />
+  <circle cx="240" cy="212.5" r="6" fill="#f44336" stroke="#fff" stroke-width="2" />
+  <circle cx="240" cy="237.5" r="6" fill="#4caf50" stroke="#fff" stroke-width="2" />
+  <circle cx="240" cy="350" r="6" fill="#f44336" stroke="#fff" stroke-width="2" />
+
+  <!-- Labels for Clip Polygon -->
+  <text x="215" y="420" font-family="sans-serif" font-size="16" font-weight="bold" fill="#00838f">C1</text>
+  <text x="215" y="40" font-family="sans-serif" font-size="16" font-weight="bold" fill="#00838f">C2</text>
+  <text x="460" y="40" font-family="sans-serif" font-size="16" font-weight="bold" fill="#00838f">C3</text>
+  <text x="460" y="420" font-family="sans-serif" font-size="16" font-weight="bold" fill="#00838f">C4</text>
+
+  <!-- Labels for Subject Polygon -->
+  <text x="75" y="95" font-family="sans-serif" font-size="16" font-weight="bold" fill="#d84315">A</text>
+  <text x="315" y="95" font-family="sans-serif" font-size="16" font-weight="bold" fill="#d84315">B</text>
+  <text x="315" y="205" font-family="sans-serif" font-size="16" font-weight="bold" fill="#d84315">C</text>
+  <text x="155" y="230" font-family="sans-serif" font-size="16" font-weight="bold" fill="#d84315">D</text>
+  <text x="315" y="255" font-family="sans-serif" font-size="16" font-weight="bold" fill="#d84315">E</text>
+  <text x="315" y="365" font-family="sans-serif" font-size="16" font-weight="bold" fill="#d84315">F</text>
+  <text x="75" y="365" font-family="sans-serif" font-size="16" font-weight="bold" fill="#d84315">G</text>
+
+  <!-- Labels for Intersections -->
+  <text x="150" y="90" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2e7d32">A' (Enter)</text>
+  <text x="250" y="205" font-family="sans-serif" font-size="14" font-weight="bold" fill="#c62828">D' (Exit)</text>
+  <text x="250" y="255" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2e7d32">E' (Enter)</text>
+  <text x="150" y="340" font-family="sans-serif" font-size="14" font-weight="bold" fill="#c62828">F' (Exit)</text>
+</svg>
