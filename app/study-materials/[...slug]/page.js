@@ -6,6 +6,7 @@ import rehypeRaw from 'rehype-raw';
 import 'katex/dist/katex.min.css';
 import Link from 'next/link';
 import PdfViewer from '../../../components/PdfViewer';
+import MermaidDiagram from '../../../components/MermaidDiagram';
 import { getLectureBySlug, getActiveCourseInfo } from '../../../lib/api';
 import { notFound } from 'next/navigation';
 
@@ -44,6 +45,15 @@ export default async function LecturePage({ params }) {
               remarkPlugins={[remarkGfm, remarkMath]}
               rehypePlugins={[rehypeRaw, rehypeKatex]}
               components={{
+                code({node, inline, className, children, ...props}) {
+                  const match = /language-(\w+)/.exec(className || '');
+                  const isMermaid = match && match[1] === 'mermaid';
+                  
+                  if (!inline && isMermaid) {
+                    return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />;
+                  }
+                  return <code className={className} {...props}>{children}</code>;
+                },
                 img: ({ node, ...props }) => {
                   let src = props.src;
                   if (src && !src.startsWith('http') && !src.startsWith('/')) {

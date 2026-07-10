@@ -1,5 +1,5 @@
 {
-  "activeCourse": "computer_graphics",
+  "activeCourse": "compiler",
   "courses": {
     "se_dp": {
       "title": "Software Engineering & Design Patterns",
@@ -95,7 +95,14 @@
       "title": "Compiler Design",
       "shortTitle": "Compiler Design",
       "folderName": "compiler",
-      "lecturesSortOrder": [],
+      "lecturesSortOrder": [
+        "1_Introduction_to_Compilers",
+        "2_Lexical_Analysis_and_Automata",
+        "3_Syntax_Analysis_and_CFG",
+        "4_Top_Down_Parsing",
+        "5_Bottom_Up_Parsing",
+        "6_Intermediate_Code_and_Optimization"
+      ],
       "questionsSortOrder": [
         "TT-1",
         "TT-2",
