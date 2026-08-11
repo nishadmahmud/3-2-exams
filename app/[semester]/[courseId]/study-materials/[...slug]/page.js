@@ -5,17 +5,17 @@ import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import 'katex/dist/katex.min.css';
 import Link from 'next/link';
-import PdfViewer from '../../../components/PdfViewer';
-import MermaidDiagram from '../../../components/MermaidDiagram';
-import { getLectureBySlug, getActiveCourseInfo } from '../../../lib/api';
+import PdfViewer from '../../../../../components/PdfViewer';
+import MermaidDiagram from '../../../../../components/MermaidDiagram';
+import { getLectureBySlug, getCourseInfo } from '../../../../../lib/api';
 import { notFound } from 'next/navigation';
 
 export default async function LecturePage({ params }) {
-  const { slug } = await params;
+  const { semester, courseId, slug } = await params;
   
-  const lecture = getLectureBySlug(slug);
-  const courseInfo = getActiveCourseInfo();
-  const folderName = courseInfo?.folderName || 'se_dp';
+  const lecture = getLectureBySlug(semester, courseId, slug);
+  const courseInfo = getCourseInfo(semester, courseId);
+  const folderName = courseInfo?.folderName || '3-2/se_dp';
 
   if (!lecture) {
     notFound();
@@ -25,7 +25,7 @@ export default async function LecturePage({ params }) {
     <div>
       <div className="mb-6">
         <Link 
-          href="/study-materials" 
+          href={`/${semester}/${courseId}/study-materials`}
           className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium bg-[var(--dark)] rounded-md hover:opacity-90 transition-opacity"
           style={{ color: '#ffffff' }}
         >
@@ -60,7 +60,7 @@ export default async function LecturePage({ params }) {
                     const folderPath = slug.slice(0, -1).join('/');
                     src = `/courses/${folderName}/lecture/${folderPath ? folderPath + '/' : ''}${src}`;
                   }
-                  return <img {...props} src={src} className="max-w-full max-h-72 w-auto object-contain my-4 rounded-md mx-auto block shadow-sm border border-[var(--line)]" alt={props.alt || "Markdown image"} />;
+                  return <img {...props} src={src} className="w-full md:max-w-[80%] h-auto object-contain my-4 rounded-md mx-auto block shadow-sm border border-[var(--line)]" alt={props.alt || "Markdown image"} />;
                 }
               }}
             >

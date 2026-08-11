@@ -4,16 +4,22 @@ import remarkMath from 'remark-math';
 import rehypeRaw from 'rehype-raw';
 import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
-import { getExtraBySlug, getQuestionBySlug, getActiveCourseInfo } from '../../lib/api';
-import AnswerDropdown from '../../components/AnswerDropdown';
-import MermaidDiagram from '../../components/MermaidDiagram';
+import { getExtraBySlug, getQuestionBySlug, getCourseInfo } from '../../../../lib/api';
+import AnswerDropdown from '../../../../components/AnswerDropdown';
+import MermaidDiagram from '../../../../components/MermaidDiagram';
 
-export default function ExtraQuestionsPage() {
-  const courseInfo = getActiveCourseInfo();
-  const folderName = courseInfo?.folderName || 'se_dp';
+export default async function ExtraQuestionsPage({ params }) {
+  const { semester, courseId } = await params;
+  const courseInfo = getCourseInfo(semester, courseId);
+  
+  if (!courseInfo) {
+    return <div className="p-8 text-center text-red-500">Course not found.</div>;
+  }
+  
+  const folderName = courseInfo?.folderName || '3-2/se_dp';
   
   // Try to load Math_Problems, then Xtras_qstn, and if not found (e.g. in data_science), fallback to Topic Wise
-  const question = getExtraBySlug(['Math_Problems']) || getExtraBySlug(['Xtras_qstn']) || getQuestionBySlug(['Topic Wise', 'Topic Wise']);
+  const question = getExtraBySlug(semester, courseId, ['Math_Problems']) || getExtraBySlug(semester, courseId, ['Xtras_qstn']) || getQuestionBySlug(semester, courseId, ['Topic Wise', 'Topic Wise']);
 
   return (
     <div>
@@ -42,10 +48,10 @@ export default function ExtraQuestionsPage() {
                   let src = props.src;
                   if (src && !src.startsWith('http') && !src.startsWith('/')) {
                     // If the question is fetched from extras, use extras path, else use questions path
-                    const basePath = getExtraBySlug(['Xtras_qstn']) ? 'extras' : 'questions/Topic Wise';
+                    const basePath = getExtraBySlug(semester, courseId, ['Xtras_qstn']) ? 'extras' : 'questions/Topic Wise';
                     src = `/courses/${folderName}/${basePath}/${src}`;
                   }
-                  return <img {...props} src={src} className="max-w-full max-h-72 w-auto object-contain my-4 rounded-md mx-auto block shadow-sm border border-[var(--line)]" alt={props.alt || "Markdown image"} />;
+                  return <img {...props} src={src} className="w-full md:max-w-[80%] h-auto object-contain my-4 rounded-md mx-auto block shadow-sm border border-[var(--line)]" alt={props.alt || "Markdown image"} />;
                 }
               }}
             >

@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function Navigation() {
+export default function Navigation({ semester, courseId }) {
   const pathname = usePathname();
 
   const links = [
-    { href: "/study-materials", label: "Materials" },
-    { href: "/questions", label: "Q&A" },
-    { href: "/extra-questions", label: "Extra" },
+    { href: `/${semester}/${courseId}/study-materials`, label: "Materials" },
+    { href: `/${semester}/${courseId}/questions`, label: "Q&A" },
+    { href: `/${semester}/${courseId}/extra-questions`, label: "Extra" },
   ];
 
   return (
@@ -18,7 +18,7 @@ export default function Navigation() {
       <nav className="hidden md:block">
         <ul className="flex gap-6 text-sm font-medium">
           {links.map((link) => {
-            const isActive = pathname.startsWith(link.href) || (pathname === "/" && link.href === "/study-materials");
+            const isActive = pathname.startsWith(link.href);
             return (
               <li key={link.href}>
                 <Link 
@@ -38,7 +38,7 @@ export default function Navigation() {
         <nav className="bg-white shadow-lg border border-[var(--line)] rounded-full p-1">
           <ul className="flex justify-between items-center text-[10px] sm:text-xs font-medium tracking-wide">
             {links.map((link) => {
-              const isActive = pathname.startsWith(link.href) || (pathname === "/" && link.href === "/study-materials");
+              const isActive = pathname.startsWith(link.href);
               return (
                 <li key={link.href} className="flex-1 text-center">
                   <Link 

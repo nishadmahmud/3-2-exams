@@ -1,13 +1,19 @@
 import Link from 'next/link';
-import { getQuestions, getActiveCourseInfo } from '../../lib/api';
+import { getLectures, getCourseInfo } from '../../../../lib/api';
 
-export default function QuestionsPage() {
-  const questions = getQuestions();
-  const courseInfo = getActiveCourseInfo();
-  const sortOrder = courseInfo?.questionsSortOrder || [];
+export default async function StudyMaterialsPage({ params }) {
+  const { semester, courseId } = await params;
+  const lectures = getLectures(semester, courseId);
+  const courseInfo = getCourseInfo(semester, courseId);
+  
+  if (!courseInfo) {
+    return <div className="p-8 text-center text-red-500">Course not found for: {semester} / {courseId}</div>;
+  }
+
+  const sortOrder = courseInfo.lecturesSortOrder || [];
 
   // Custom sort order based on dynamic configuration
-  const sortedQuestions = [...questions].sort((a, b) => {
+  const sortedLectures = [...lectures].sort((a, b) => {
     const titleA = a.title.toLowerCase();
     const titleB = b.title.toLowerCase();
     
@@ -24,23 +30,23 @@ export default function QuestionsPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-[var(--dark)] mb-6">Question Answers</h1>
+      <h1 className="text-3xl font-bold text-[var(--dark)] mb-6">Study Materials</h1>
       
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {sortedQuestions.map((question) => (
+        {sortedLectures.map((lecture) => (
           <Link
-            key={question.slug.join('/')}
-            href={`/questions/${question.slug.join('/')}`}
+            key={lecture.slug.join('/')}
+            href={`/${semester}/${courseId}/study-materials/${lecture.slug.join('/')}`}
             className="block p-5 bg-[#ffffff] shadow-md border border-[var(--line)] rounded-xl hover:border-[var(--line-dark)] hover:shadow-xl transition-all group h-full"
           >
             <div className="flex flex-col h-full justify-between">
               <div>
                 <h2 className="text-lg font-semibold text-[var(--dark)] m-0 leading-tight break-words line-clamp-2">
-                  {question.title}
+                  {lecture.title}
                 </h2>
-                {question.subtitle && (
+                {lecture.subtitle && (
                   <p className="text-xs text-[var(--text-muted)] mt-2 line-clamp-1">
-                    {question.subtitle}
+                    {lecture.subtitle}
                   </p>
                 )}
               </div>
@@ -52,9 +58,9 @@ export default function QuestionsPage() {
             </div>
           </Link>
         ))}
-        {questions.length === 0 && (
+        {lectures.length === 0 && (
           <div className="col-span-full p-8 text-[var(--text-muted)] text-center border border-[var(--line)] rounded-xl">
-            No questions found.
+            No study materials found.
           </div>
         )}
       </div>

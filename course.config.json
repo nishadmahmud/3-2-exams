@@ -1,118 +1,139 @@
 {
-  "activeCourse": "compiler",
-  "courses": {
-    "se_dp": {
-      "title": "Software Engineering & Design Patterns",
-      "shortTitle": "SE & DP Study",
-      "folderName": "se_dp",
-      "lecturesSortOrder": [
-        "design patterns",
-        "design patterns_codes",
-        "design patterns codes",
-        "lecture 1",
-        "lecture 2",
-        "lecture 3",
-        "lecture 4",
-        "lecture 5",
-        "lecture 6",
-        "lecture 7",
-        "lecture 8",
-        "lecture 9",
-        "lecture 10",
-        "solid",
-        "uml"
-      ],
-      "questionsSortOrder": [
-        "2023",
-        "2022",
-        "metro",
-        "tt-2",
-        "practice",
-        "2015",
-        "xtra"
-      ]
-    },
-    "cryptography": {
-      "title": "Cryptography & Network Security",
-      "shortTitle": "Crypto Study",
-      "folderName": "cryptography",
-      "lecturesSortOrder": [],
-      "questionsSortOrder": []
-    },
-    "data_science": {
-      "title": "Data Science",
-      "shortTitle": "Data Science",
-      "folderName": "data_science",
-      "lecturesSortOrder": [
-        "Lectures 1",
-        "Lectures 2",
-        "Lectures 3",
-        "Lectures 4",
-        "Lectures 5",
-        "Lectures 6"
-      ],
-      "questionsSortOrder": [
-        "Topic Wise",
-        "TT-1",
-        "TT-2",
-        "2022 TT-1",
-        "2022 TT-2",
-        "2022 A",
-        "2022 B",
-        "2023"
-      ],
-      "lectureSubtitles": {
-        "Lectures 1": "Introduction to Data Science",
-        "Lectures 2": "Process and EDA",
-        "Lectures 3": "Machine Learning & Algorithms",
-        "Lectures 4": "Machine Learning (Extended)",
-        "Lectures 5": "Natural Language Processing (NLP)",
-        "Lectures 6": "Deep Learning Networks & NLP"
+  "semesters": {
+    "4-1": {
+      "title": "Semester 4-1",
+      "courses": {
+        "peripheral": {
+          "title": "Peripheral Interfacing",
+          "shortTitle": "Peripheral",
+          "folderName": "4-1/peripheral",
+          "lecturesSortOrder": [
+            "TT-1"
+          ],
+          "questionsSortOrder": [],
+          "lectureSubtitles": {
+            "TT-1": "Architecture & Interfacing of Intel 8255A"
+          }
+        }
       }
     },
-    "computer_graphics": {
-      "title": "Computer Graphics",
-      "shortTitle": "Computer Graphics",
-      "folderName": "computer_graphics",
-      "lecturesSortOrder": [
-        "1_Introduction_and_Basic_Concepts",
-        "2_Color_Models",
-        "3_Drawing_Algorithms",
-        "4_Geometric_Transformations",
-        "5_Clipping_Algorithms",
-        "6_Curves_and_Splines",
-        "7_Assignment",
-        "theory"
-      ],
-      "questionsSortOrder": [
-        "2021",
-        "TT-1",
-        "TT-2"
-      ],
-      "lectureSubtitles": {}
-    },
-    "compiler": {
-      "title": "Compiler Design",
-      "shortTitle": "Compiler Design",
-      "folderName": "compiler",
-      "lecturesSortOrder": [
-        "1_Introduction_to_Compilers",
-        "2_Lexical_Analysis_and_Automata",
-        "3_Syntax_Analysis_and_CFG",
-        "4_Top_Down_Parsing",
-        "5_Bottom_Up_Parsing",
-        "6_Intermediate_Code_and_Optimization"
-      ],
-      "questionsSortOrder": [
-        "TT-1",
-        "TT-2",
-        "2023",
-        "2022",
-        "2022 TT-1",
-        "2022 TT-2",
-        "2021"
-      ],
-      "lectureSubtitles": {}
+    "3-2": {
+      "title": "Semester 3-2",
+      "courses": {
+        "se_dp": {
+          "title": "Software Engineering & Design Patterns",
+          "shortTitle": "SE & DP Study",
+          "folderName": "3-2/se_dp",
+          "lecturesSortOrder": [
+            "design patterns",
+            "design patterns_codes",
+            "design patterns codes",
+            "lecture 1",
+            "lecture 2",
+            "lecture 3",
+            "lecture 4",
+            "lecture 5",
+            "lecture 6",
+            "lecture 7",
+            "lecture 8",
+            "lecture 9",
+            "lecture 10",
+            "solid",
+            "uml"
+          ],
+          "questionsSortOrder": [
+            "2023",
+            "2022",
+            "metro",
+            "tt-2",
+            "practice",
+            "2015",
+            "xtra"
+          ]
+        },
+        "cryptography": {
+          "title": "Cryptography & Network Security",
+          "shortTitle": "Crypto Study",
+          "folderName": "3-2/cryptography",
+          "lecturesSortOrder": [],
+          "questionsSortOrder": []
+        },
+        "data_science": {
+          "title": "Data Science",
+          "shortTitle": "Data Science",
+          "folderName": "3-2/data_science",
+          "lecturesSortOrder": [
+            "Lectures 1",
+            "Lectures 2",
+            "Lectures 3",
+            "Lectures 4",
+            "Lectures 5",
+            "Lectures 6"
+          ],
+          "questionsSortOrder": [
+            "Topic Wise",
+            "TT-1",
+            "TT-2",
+            "2022 TT-1",
+            "2022 TT-2",
+            "2022 A",
+            "2022 B",
+            "2023"
+          ],
+          "lectureSubtitles": {
+            "Lectures 1": "Introduction to Data Science",
+            "Lectures 2": "Process and EDA",
+            "Lectures 3": "Machine Learning & Algorithms",
+            "Lectures 4": "Machine Learning (Extended)",
+            "Lectures 5": "Natural Language Processing (NLP)",
+            "Lectures 6": "Deep Learning Networks & NLP"
+          }
+        },
+        "computer_graphics": {
+          "title": "Computer Graphics",
+          "shortTitle": "Computer Graphics",
+          "folderName": "3-2/computer_graphics",
+          "lecturesSortOrder": [
+            "1_Introduction_and_Basic_Concepts",
+            "2_Color_Models",
+            "3_Drawing_Algorithms",
+            "4_Geometric_Transformations",
+            "5_Clipping_Algorithms",
+            "6_Curves_and_Splines",
+            "7_Assignment",
+            "theory"
+          ],
+          "questionsSortOrder": [
+            "2021",
+            "TT-1",
+            "TT-2"
+          ],
+          "lectureSubtitles": {}
+        },
+        "compiler": {
+          "title": "Compiler Design",
+          "shortTitle": "Compiler Design",
+          "folderName": "3-2/compiler",
+          "lecturesSortOrder": [
+            "1_Introduction_to_Compilers",
+            "2_Lexical_Analysis_and_Automata",
+            "3_Syntax_Analysis_and_CFG",
+            "4_Top_Down_Parsing",
+            "5_Bottom_Up_Parsing",
+            "6_Intermediate_Code_and_Optimization"
+          ],
+          "questionsSortOrder": [
+            "TT-1",
+            "TT-2",
+            "2023",
+            "2022",
+            "2022 TT-1",
+            "2022 TT-2",
+            "2021"
+          ],
+          "lectureSubtitles": {}
+        }
+      }
     }
   }
 }
